@@ -1,0 +1,52 @@
+1. Arrival Season and Arrival Month follow same regular pattern across whole dataset and doesn't follow and any seasonal trend.
+
+
+2. Shift also deosn't gives us relevant info.
+
+
+3. age_group info below:
+middle_aged    27889
+young_adult    23863
+elderly        21653
+pediatric       6595
+
+4. About language - The distribution of triage_acuity remains consistent across all language categories, indicating that language does not influence the target variable. Hence, it is not a useful feature for prediction.
+
+
+5. No matter what sex we pick , the distribution of acuity is same for male and female ,  so it's a useless column.
+
+6. Insurance Type
+Public ~60%
+Private ~25%
+Others small
+
+7. Transport Origin = Distribution of .
+triage_acuity is same across all origins.
+No category gives extra information.
+
+The feature 'transport_origin' is uniformly distributed across all categories, with no significant class imbalance.
+
+The percentage distribution of triage_acuity remains nearly identical for each transport origin category.
+
+This indicates that transport_origin does not influence the target variable and is a weak predictive feature.
+
+
+8. Pain Location :
+Although the feature 'pain_location' does not show strong variation in triage_acuity distribution within this synthetic dataset, it is retained due to its high clinical relevance. In real-world medical scenarios, pain location is an important indicator of patient severity, and therefore it may contribute valuable predictive information despite weak patterns in the current dataset.
+
+
+9. Mental Status Triage :
+The feature 'mental_status_triage' shows clear variation in the distribution of triage_acuity across its categories, indicating a strong relationship with the target variable.
+
+Higher severity states such as 'confused', 'agitated', and 'unresponsive' are associated with higher acuity levels, while 'alert' is mostly linked to moderate or lower severity.
+
+This demonstrates that mental_status_triage is a highly informative and clinically relevant feature for predicting patient acuity.
+
+
+
+10. Chief Complain System:
+Although the feature 'chief_complaint_system' shows relatively uniform distribution across acuity levels in this synthetic dataset, it is retained due to its strong clinical relevance. In real-world scenarios, different complaint systems are associated with varying levels of severity, making it an important predictive feature.
+
+
+11. Disposition: It is a very important role palying feature of this dataset showing triage_acuity is severly dependent on dispostion of a patient.
+

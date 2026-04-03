@@ -1,0 +1,6 @@
+triage_env/
+__pycache__/
+*.dll
+*.pkl
+*.h5
+.env
