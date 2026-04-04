@@ -145,33 +145,36 @@ st.markdown("---")
 #     based on patient clinical features, enabling faster and more reliable decision support.
 #     """)
 
-col1 , col2 = st.columns(2)
+st.markdown("---")
 
+col1, col2 = st.columns(2)
+
+# LEFT → TRIAGE INFO
 with col1:
-    with st.expander(" Learn more about Triage System"):
+    with st.expander("📖 Learn more about Triage System"):
 
-        st.markdown("## What is Triage?")
-
+        st.markdown("## 🏥 What is Triage?")
         st.markdown("""
-    Triage is the process of prioritizing patients in an emergency department based on the severity of their condition. 
-    It ensures that critically ill patients receive immediate care, while less urgent cases are attended appropriately.
+        Triage is the process of prioritizing patients in an emergency department based on the severity of their condition. 
+        It ensures that critically ill patients receive immediate care, while less urgent cases are attended appropriately.
 
-    In high-pressure environments like emergency rooms, accurate triage is essential to save lives and optimize resource allocation.
-    """)
+        In high-pressure environments like emergency rooms, accurate triage is essential to save lives and optimize resource allocation.
+        """)
 
-        st.markdown("## Problem Statement")
+        st.markdown("## ⚠️ Problem Statement")
         st.markdown("""
-    Emergency departments often face overcrowding, limited resources, and high patient inflow. 
-    Manual triage systems depend heavily on human judgment, which can lead to:
+        Emergency departments often face overcrowding, limited resources, and high patient inflow. 
+        Manual triage systems depend heavily on human judgment, which can lead to:
 
-    - Delays in identifying critical patients  
-    - Inconsistent decision-making  
-    - Increased risk of medical errors  
+        - Delays in identifying critical patients  
+        - Inconsistent decision-making  
+        - Increased risk of medical errors  
 
-    This project uses LightGBM machine learning algorithm to predict triage acuity levels 
-    based on patient clinical features, enabling faster and more reliable decision support.
-    """)
+        This project uses LightGBM machine learning algorithm to predict triage acuity levels 
+        based on patient clinical features, enabling faster and more reliable decision support.
+        """)
 
+# RIGHT → PATIENT SUMMARY
 with col2:
     if "preds" in locals():  # only show after prediction
         with st.expander("📋 Patient Summary"):
@@ -186,4 +189,3 @@ with col2:
                 "Temperature": temp,
                 "Pain Score": pain_score
             })
-
