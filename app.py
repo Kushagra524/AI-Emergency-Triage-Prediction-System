@@ -100,14 +100,19 @@ if st.button("Predict"):
 
     if preds == 1:
         st.error(f"Critical (Level 1)")
+        st.progress(100)
     elif preds == 2:
         st.error(f"Very Urgent (Level 2)")
+        st.progress(80)
     elif preds == 3:
         st.warning(f"Urgent (Level 3)")
+        st.progress(60)
     elif preds == 4:
         st.info(f"Less Urgent (Level 4)")
+        st.progress(40)
     else:
         st.success(f"Non-Urgent (Level 5)")
+        st.progress(20)
 
 
 st.markdown("---")
