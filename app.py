@@ -116,40 +116,14 @@ if st.button("Predict"):
 
 
 st.markdown("---")
-st.markdown("AI Triage System • Built with LightGBM")
+# st.markdown("AI Triage System • Built with LightGBM")
 
 st.markdown("---")
-
-# with st.expander(" Learn more about Triage System"):
-
-#     st.markdown("## What is Triage?")
-
-#     st.markdown("""
-#     Triage is the process of prioritizing patients in an emergency department based on the severity of their condition. 
-#     It ensures that critically ill patients receive immediate care, while less urgent cases are attended appropriately.
-
-#     In high-pressure environments like emergency rooms, accurate triage is essential to save lives and optimize resource allocation.
-#     """)
-
-#     st.markdown("## Problem Statement")
-
-#     st.markdown("""
-#     Emergency departments often face overcrowding, limited resources, and high patient inflow. 
-#     Manual triage systems depend heavily on human judgment, which can lead to:
-
-#     - Delays in identifying critical patients  
-#     - Inconsistent decision-making  
-#     - Increased risk of medical errors  
-
-#     This project uses LightGBM machine learning algorithm to predict triage acuity levels 
-#     based on patient clinical features, enabling faster and more reliable decision support.
-#     """)
 
 st.markdown("---")
 
 col1, col2 = st.columns(2)
 
-# LEFT → TRIAGE INFO
 with col1:
     with st.expander("📖 Learn more about Triage System"):
 
@@ -174,7 +148,6 @@ with col1:
         based on patient clinical features, enabling faster and more reliable decision support.
         """)
 
-# RIGHT → PATIENT SUMMARY
 with col2:
     if "preds" in locals():  # only show after prediction
         with st.expander("📋 Patient Summary"):
@@ -189,3 +162,21 @@ with col2:
                 "Temperature": temp,
                 "Pain Score": pain_score
             })
+
+
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    color: gray;
+    font-size: 14px;
+    opacity: 0.7;
+}
+</style>
+
+<div class="footer">
+    AI Triage System • Built with LightGBM
+</div>
+""", unsafe_allow_html=True)
