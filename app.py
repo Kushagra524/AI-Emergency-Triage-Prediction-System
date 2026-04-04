@@ -135,6 +135,6 @@ with st.expander(" Learn more about Triage System"):
     - Inconsistent decision-making  
     - Increased risk of medical errors  
 
-    This project uses a machine learning model to predict triage acuity levels 
+    This project uses LightGBM machine learning algorithm to predict triage acuity levels 
     based on patient clinical features, enabling faster and more reliable decision support.
     """)
