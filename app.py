@@ -116,11 +116,6 @@ if st.button("Predict"):
 
 
 st.markdown("---")
-# st.markdown("AI Triage System • Built with LightGBM")
-
-st.markdown("---")
-
-st.markdown("---")
 
 col1, col2 = st.columns(2)
 
@@ -180,3 +175,4 @@ st.markdown("""
     AI Triage System • Built with LightGBM
 </div>
 """, unsafe_allow_html=True)
+
