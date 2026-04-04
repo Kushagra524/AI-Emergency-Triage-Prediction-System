@@ -34,6 +34,20 @@ all_features = [
 st.set_page_config(page_title="AI Triage System", layout="wide")
 
 st.title("AI Assisted Emergency Triage Prediction System")
+
+#new
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("Age", age)
+
+with col2:
+    st.metric("Heart Rate", heart_rate)
+
+with col3:
+    st.metric("SpO2", spo2)
+
+
 st.markdown("Predict triage acuity using key clinical features")
 
 st.sidebar.header("Patient Inputs")
