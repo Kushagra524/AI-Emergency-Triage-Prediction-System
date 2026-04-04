@@ -145,7 +145,7 @@ with col1:
 
 with col2:
     if "preds" in locals():  # only show after prediction
-        with st.expander("📋 Patient Summary"):
+        with st.expander("Patient Summary"):
 
             st.write({
                 "Age": age,
