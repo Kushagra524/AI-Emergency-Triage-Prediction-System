@@ -122,7 +122,7 @@ col1, col2 = st.columns(2)
 with col1:
     with st.expander("Learn more about Triage System"):
 
-        st.markdown("##What is Triage?")
+        st.markdown("## What is Triage?")
         st.markdown("""
         Triage is the process of prioritizing patients in an emergency department based on the severity of their condition. 
         It ensures that critically ill patients receive immediate care, while less urgent cases are attended appropriately.
