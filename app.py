@@ -68,7 +68,19 @@ with open("features.json", "r") as f:
 
 st.set_page_config(page_title="AI Triage System", layout="wide")
 
-st.title("AI Assisted Emergency Triage Prediction System")
+st.markdown("""
+<h1 style='
+    text-align: center;
+    background: linear-gradient(90deg, #00FFD1, #00BFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 48px;
+'>
+AI Assisted Emergency Triage Prediction System
+</h1>
+""", unsafe_allow_html=True)
+
+
 st.markdown("Predict triage acuity using key clinical features")
 
 st.sidebar.header("Patient Inputs")
