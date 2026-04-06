@@ -44,14 +44,13 @@ with open("features.json", "r") as f:
 st.set_page_config(page_title="AI Triage System", layout="wide")
 
 st.title("AI Assisted Emergency Triage Prediction System")
-
 st.markdown("Predict triage acuity using key clinical features")
 
 st.sidebar.header("Patient Inputs")
 
 # IMPORTANT FEATURES INPUT
 arrival_mode = st.sidebar.selectbox("Arrival Mode (walk-in = 1 , police = 2 , ambulance = 3 , helicopter = 4 , brought by family = 5)", [1,2,3,4,5])
-age = st.sidebar.slider("Age", 0, 100, 30)
+
 mental_status = st.sidebar.selectbox("Mental Status", [0,1,2])
 ed_visits = st.sidebar.number_input("Prior ED Visits (12m)", 0, 50, 0)
 admissions = st.sidebar.number_input("Prior Admissions (12m)", 0, 50, 0)
@@ -60,10 +59,7 @@ comorbidities = st.sidebar.number_input("Comorbidities (Other diseases except th
 
 systolic_bp = st.sidebar.number_input("Systolic BP", 50, 250, 120)
 diastolic_bp = st.sidebar.number_input("Diastolic BP", 30, 150, 80)
-heart_rate = st.sidebar.number_input("Heart Rate", 30, 200, 80)
 resp_rate = st.sidebar.number_input("Respiratory Rate", 5, 40, 16)
-temp = st.sidebar.number_input("Temperature (C)", 30.0, 42.0, 37.0)
-spo2 = st.sidebar.number_input("SpO2", 50, 100, 98)
 
 pain_score = st.sidebar.slider("Pain Score", 0, 10, 3)
 
@@ -71,6 +67,16 @@ weight = st.sidebar.number_input("Weight (kg)", 20.0, 200.0, 70.0)
 height = st.sidebar.number_input("Height (cm)", 100.0, 220.0, 170.0)
 
 shock_index = heart_rate / systolic_bp if systolic_bp != 0 else 0
+
+col1, col2 = st.columns(2)
+
+with col1:
+    age = st.slider("Age", 0, 100, 25)
+    spo2 = st.slider("SpO2 (%)", 50, 100, 98)
+
+with col2:
+    temp = st.slider("Temperature (°C)", 34.0, 42.0, 36.5)
+    heart_rate = st.slider("Heart Rate (bpm)", 40, 180, 75)
 
 
 if st.button("Predict"):
