@@ -4,39 +4,64 @@ import pandas as pd
 import numpy as np
 import lightgbm as light
 
+st.markdown("""
+<style>
+/* Background */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Main container */
+.main {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* Title */
+h1 {
+    color: #00FFD1;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Subheading */
+h2, h3 {
+    color: #00BFFF;
+}
+
+/* Buttons */
+.stButton>button {
+    background: linear-gradient(90deg, #00FFD1, #00BFFF);
+    color: black;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s;
+}
+.stButton>button:hover {
+    transform: scale(1.05);
+}
+
+/* Metric cards */
+[data-testid="metric-container"] {
+    background-color: #111;
+    border: 1px solid #00FFD1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Alerts */
+.stAlert {
+    border-radius: 10px;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 model = light.Booster(model_file="lightgbm_model_triage.txt")
 
 
-# all_features = [
-#     'site_id','arrival_mode','age','age_group',
-#     'mental_status_triage','num_prior_ed_visits_12m',
-#     'num_prior_admissions_12m','num_active_medications',
-#     'num_comorbidities','systolic_bp','diastolic_bp',
-#     'mean_arterial_pressure','pulse_pressure','heart_rate',
-#     'respiratory_rate','temperature_c','spo2','gcs_total',
-#     'pain_score','weight_kg','height_cm','bmi','shock_index',
-#     'news2_score','day_sin','day_cos',
-#     'pain_location_back','pain_location_chest','pain_location_extremity',
-#     'pain_location_head','pain_location_multiple','pain_location_other',
-#     'pain_location_pelvis',
-#     'chief_complaint_system_critical',
-#     'chief_complaint_system_genitourinary',
-#     'chief_complaint_system_mild',
-#     'chief_complaint_system_moderate',
-#     'chief_complaint_system_special',
-#     'systolic_bp_missing','diastolic_bp_missing',
-#     'mean_arterial_pressure_missing','pulse_pressure_missing',
-#     'respiratory_rate_missing','temperature_c_missing',
-#     'shock_index_missing',
-#     'hr_spo2_ratio',
-#     'temp_hr',
-#     'resp_spo2',
-#     'spo2_critical',
-#     'temp_critical',
-#     'hr_critical',
-#     'severity_score'
-# ]
 
 with open("features.json", "r") as f:
     all_features = json.load(f)
