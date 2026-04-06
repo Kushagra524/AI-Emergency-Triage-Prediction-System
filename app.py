@@ -8,7 +8,7 @@ model = light.Booster(model_file="lightgbm_model_triage.txt")
 
 
 all_features = [
-    'site_id','triage_nurse_id','arrival_mode','age','age_group',
+    'site_id','arrival_mode','age','age_group',
     'mental_status_triage','num_prior_ed_visits_12m',
     'num_prior_admissions_12m','num_active_medications',
     'num_comorbidities','systolic_bp','diastolic_bp',
@@ -27,7 +27,14 @@ all_features = [
     'systolic_bp_missing','diastolic_bp_missing',
     'mean_arterial_pressure_missing','pulse_pressure_missing',
     'respiratory_rate_missing','temperature_c_missing',
-    'shock_index_missing'
+    'shock_index_missing',
+    'hr_spo2_ratio',
+    'temp_hr',
+    'resp_spo2',
+    'spo2_critical',
+    'temp_critical',
+    'hr_critical',
+    'severity_score'
 ]
 
 
@@ -90,10 +97,26 @@ if st.button("Predict"):
     })
 
     df = pd.DataFrame([data])
-
+    df['hr_spo2_ratio'] = df['heart_rate'] / (df['spo2'] + 1)
+    df['temp_hr'] = df['temperature_c'] * df['heart_rate']
+    df['resp_spo2'] = df['respiratory_rate'] / (df['spo2'] + 1)
+    
+    df['pain_score'] = df['pain_score'] * 0.5
+    
+    df['spo2_critical'] = (df['spo2'] < 90).astype(int)
+    
+    df['temp_critical'] = (df['temperature_c'] > 39).astype(int)
+    df['hr_critical'] = (df['heart_rate'] > 120).astype(int)
+    
+    df['severity_score'] = (
+    df['spo2_critical'] + df['temp_critical'] + df['hr_critical']
+)
+    
+    df = df[all_features]
     
     preds = model.predict(df)
     preds = np.argmax(preds, axis=1)[0]
+    preds = preds + 1
 
    
     st.subheader("Prediction Result")
