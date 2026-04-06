@@ -66,7 +66,6 @@ pain_score = st.sidebar.slider("Pain Score", 0, 10, 3)
 weight = st.sidebar.number_input("Weight (kg)", 20.0, 200.0, 70.0)
 height = st.sidebar.number_input("Height (cm)", 100.0, 220.0, 170.0)
 systolic_bp = st.sidebar.number_input("Systolic BP", 50, 250, 120)
-shock_index = heart_rate / systolic_bp if systolic_bp != 0 else 0
 
 col1, col2 = st.columns(2)
 
@@ -77,6 +76,8 @@ with col1:
 with col2:
     temp = st.slider("Temperature (°C)", 34.0, 42.0, 36.5)
     heart_rate = st.slider("Heart Rate (bpm)", 40, 180, 75)
+
+shock_index = heart_rate / systolic_bp if systolic_bp != 0 else 0
 
 
 if st.button("Predict"):
