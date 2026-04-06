@@ -1,3 +1,4 @@
+import json
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,36 +8,38 @@ import lightgbm as light
 model = light.Booster(model_file="lightgbm_model_triage.txt")
 
 
-all_features = [
-    'site_id','arrival_mode','age','age_group',
-    'mental_status_triage','num_prior_ed_visits_12m',
-    'num_prior_admissions_12m','num_active_medications',
-    'num_comorbidities','systolic_bp','diastolic_bp',
-    'mean_arterial_pressure','pulse_pressure','heart_rate',
-    'respiratory_rate','temperature_c','spo2','gcs_total',
-    'pain_score','weight_kg','height_cm','bmi','shock_index',
-    'news2_score','day_sin','day_cos',
-    'pain_location_back','pain_location_chest','pain_location_extremity',
-    'pain_location_head','pain_location_multiple','pain_location_other',
-    'pain_location_pelvis',
-    'chief_complaint_system_critical',
-    'chief_complaint_system_genitourinary',
-    'chief_complaint_system_mild',
-    'chief_complaint_system_moderate',
-    'chief_complaint_system_special',
-    'systolic_bp_missing','diastolic_bp_missing',
-    'mean_arterial_pressure_missing','pulse_pressure_missing',
-    'respiratory_rate_missing','temperature_c_missing',
-    'shock_index_missing',
-    'hr_spo2_ratio',
-    'temp_hr',
-    'resp_spo2',
-    'spo2_critical',
-    'temp_critical',
-    'hr_critical',
-    'severity_score'
-]
+# all_features = [
+#     'site_id','arrival_mode','age','age_group',
+#     'mental_status_triage','num_prior_ed_visits_12m',
+#     'num_prior_admissions_12m','num_active_medications',
+#     'num_comorbidities','systolic_bp','diastolic_bp',
+#     'mean_arterial_pressure','pulse_pressure','heart_rate',
+#     'respiratory_rate','temperature_c','spo2','gcs_total',
+#     'pain_score','weight_kg','height_cm','bmi','shock_index',
+#     'news2_score','day_sin','day_cos',
+#     'pain_location_back','pain_location_chest','pain_location_extremity',
+#     'pain_location_head','pain_location_multiple','pain_location_other',
+#     'pain_location_pelvis',
+#     'chief_complaint_system_critical',
+#     'chief_complaint_system_genitourinary',
+#     'chief_complaint_system_mild',
+#     'chief_complaint_system_moderate',
+#     'chief_complaint_system_special',
+#     'systolic_bp_missing','diastolic_bp_missing',
+#     'mean_arterial_pressure_missing','pulse_pressure_missing',
+#     'respiratory_rate_missing','temperature_c_missing',
+#     'shock_index_missing',
+#     'hr_spo2_ratio',
+#     'temp_hr',
+#     'resp_spo2',
+#     'spo2_critical',
+#     'temp_critical',
+#     'hr_critical',
+#     'severity_score'
+# ]
 
+with open("features.json", "r") as f:
+    all_features = json.load(f)
 
 st.set_page_config(page_title="AI Triage System", layout="wide")
 
@@ -111,7 +114,14 @@ if st.button("Predict"):
     df['severity_score'] = (
     df['spo2_critical'] + df['temp_critical'] + df['hr_critical']
 )
+    missing_cols = [col for col in all_features if col not in df.columns]
+    for col in missing_cols:
+        df[col] = 0
     
+    extra_cols = [col for col in df.columns if col not in all_features]
+    
+    df = df.drop(columns=extra_cols)
+
     df = df[all_features]
     
     preds = model.predict(df)
