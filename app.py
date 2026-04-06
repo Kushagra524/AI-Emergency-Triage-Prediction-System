@@ -147,6 +147,16 @@ if st.button("Predict"):
         st.success(f"Non-Urgent (Level 5)")
         st.progress(20)
 
+    st.subheader("Patient Risk Overview")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    col1.metric("SpO2", spo2)
+    
+    col2.metric("Heart Rate", heart_rate)
+    
+    col3.metric("Temperature", temperature)
+
 
 st.markdown("---")
 
