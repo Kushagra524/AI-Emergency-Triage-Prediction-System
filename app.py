@@ -240,15 +240,16 @@ with col2:
 st.markdown("""
 <style>
 .footer {
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
+    text-align: center;
     color: gray;
     font-size: 14px;
     opacity: 0.7;
+    margin-top: 40px;
 }
 </style>
+""", unsafe_allow_html=True)
 
+st.markdown("""
 <div class="footer">
     AI Triage System • Built with LightGBM
 </div>
