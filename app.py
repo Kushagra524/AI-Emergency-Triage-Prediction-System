@@ -191,6 +191,7 @@ if st.button("Predict"):
     else:
         st.markdown("<h3 style='color:green;'>🟢 Non-Urgent (Level 5)</h3>", unsafe_allow_html=True)
 
+    confidence = np.max(probs)
     risk_score = int(confidence * 100)
     st.markdown(f"""
                 <div style="
