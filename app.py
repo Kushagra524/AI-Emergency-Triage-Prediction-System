@@ -65,7 +65,6 @@ pain_score = st.sidebar.slider("Pain Score", 0, 10, 3)
 
 weight = st.sidebar.number_input("Weight (kg)", 20.0, 200.0, 70.0)
 height = st.sidebar.number_input("Height (cm)", 100.0, 220.0, 170.0)
-systolic_bp = st.sidebar.number_input("Systolic BP", 50, 250, 120)
 
 col1, col2 = st.columns(2)
 
