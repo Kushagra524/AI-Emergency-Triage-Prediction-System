@@ -181,20 +181,15 @@ if st.button("Predict"):
     st.subheader("Prediction Result")
 
     if preds == 1:
-        st.error(f"Critical (Level 1)")
-        st.progress(100)
+        st.markdown("<h3 style='color:red;'>🔴 Critical (Level 1)</h3>", unsafe_allow_html=True)
     elif preds == 2:
-        st.error(f"Very Urgent (Level 2)")
-        st.progress(80)
+        st.markdown("<h3 style='color:orange;'>🟠 Very Urgent (Level 2)</h3>", unsafe_allow_html=True)
     elif preds == 3:
-        st.warning(f"Urgent (Level 3)")
-        st.progress(60)
+        st.markdown("<h3 style='color:yellow;'>🟡 Urgent (Level 3)</h3>", unsafe_allow_html=True)
     elif preds == 4:
-        st.info(f"Less Urgent (Level 4)")
-        st.progress(40)
+        st.markdown("<h3 style='color:lightblue;'>🔵 Less Urgent (Level 4)</h3>", unsafe_allow_html=True)
     else:
-        st.success(f"Non-Urgent (Level 5)")
-        st.progress(20)
+        st.markdown("<h3 style='color:green;'>🟢 Non-Urgent (Level 5)</h3>", unsafe_allow_html=True)
 
 
 st.markdown("---")
