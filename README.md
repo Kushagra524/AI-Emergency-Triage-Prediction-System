@@ -64,7 +64,7 @@ AI-Emergency-Triage-Prediction/
 
 | Layer | Tools |
 |-------|-------|
-| Language | Python 3.x |
+| Language | Python 3.10.11 |
 | ML Model | LightGBM |
 | Data Handling | Pandas, NumPy |
 | Visualization | Seaborn, Matplotlib |
@@ -183,9 +183,9 @@ The application is deployed on **Streamlit Cloud**.
 ### Class Imbalance
 The triage dataset is heavily skewed — critical cases (level 1) are far fewer than non-urgent ones (level 5), mirroring real-world emergency data. Techniques applied to mitigate this include:
 
-- Adjusting `class_weight` and `scale_pos_weight` in LightGBM
+- Adjusting `class_weight` in LightGBM
 - Using stratified splits during validation
-- Evaluating with macro-averaged F1 score instead of raw accuracy
+- Evaluating with classification report instead of raw accuracy
 
 ---
 
