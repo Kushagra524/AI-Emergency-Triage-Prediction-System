@@ -120,7 +120,7 @@ Make sure you have **Python 3.8+** installed on your system.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/AI-Emergency-Triage-Prediction.git
+git clone https://github.com/Kushagra524/AI-Emergency-Triage-Prediction.git
 cd AI-Emergency-Triage-Prediction
 ```
 
