@@ -34,7 +34,7 @@ AI-Emergency-Triage-Prediction/
 │   └── model_training.ipynb       # LightGBM training (Google Colab)
 │
 ├── models/
-│   └── lightgbm_triage_model.txt      # Saved LightGBM model
+│   └── lightgbm_model_triage.txt      # Saved LightGBM model
 │
 ├── app/
 │   └── app.py                     # Streamlit UI
