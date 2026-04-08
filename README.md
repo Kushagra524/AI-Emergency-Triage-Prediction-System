@@ -30,8 +30,8 @@ AI-Emergency-Triage-Prediction/
 │   └── test.csv                   # Test dataset (200,000 × 40)
 │
 ├── notebooks/
-│   └── eda_and_cleaning.ipynb     # EDA & data preprocessing (VS Code)
-│   └── model_training.ipynb       # LightGBM training (Google Colab)
+│   └── eda.ipynb     # EDA & data preprocessing (VS Code)
+│   └── Triage_Acuity.ipynb       # LightGBM training (Google Colab)
 │
 ├── models/
 │   └── lightgbm_model_triage.txt      # Saved LightGBM model
